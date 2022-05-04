@@ -156,15 +156,15 @@ node_t *rbtree_insert(rbtree *t, const key_t key) {
 
 node_t *rbtree_find(const rbtree *t, const key_t key) {
   node_t *s = t->root;
-  while(s!=t->nil && s->key != key){
-    if(s->key > key){
+  while(s!=t->nil){
+    if(s->key == key){
+      return s;
+    }
+    else if(s->key > key){
       s = s->left;
     }else{
       s = s->right;
     }
-  }
-  if(s->key == key){
-    return s;
   }
   return NULL;
 }
